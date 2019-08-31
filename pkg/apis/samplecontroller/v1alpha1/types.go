@@ -23,32 +23,33 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// Foo is a specification for a Foo resource
-type Foo struct {
+// DeployCustom is a specification for a DeployCustom resource
+type DeployCustom struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   FooSpec   `json:"spec"`
-	Status FooStatus `json:"status"`
+	Spec   DeployCustomSpec   `json:"spec"`
+	Status DeployCustomStatus `json:"status"`
 }
 
-// FooSpec is the spec for a Foo resource
-type FooSpec struct {
+// DeployCustomSpec is the spec for a DeployCustom resource
+type DeployCustomSpec struct {
 	DeploymentName string `json:"deploymentName"`
+	Image          string `json:"image"`
 	Replicas       *int32 `json:"replicas"`
 }
 
-// FooStatus is the status for a Foo resource
-type FooStatus struct {
+// DeployCustomStatus is the status for a DeployCustom resource
+type DeployCustomStatus struct {
 	AvailableReplicas int32 `json:"availableReplicas"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// FooList is a list of Foo resources
-type FooList struct {
+// DeployCustomList is a list of DeployCustom resources
+type DeployCustomList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 
-	Items []Foo `json:"items"`
+	Items []DeployCustom `json:"items"`
 }
